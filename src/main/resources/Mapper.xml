@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MemberMapper">
+
+	<insert id="insertMember" parameterType="member"> <!-- 회원 추가 -->
+		INSERT INTO
+		members(id, passwd, name)
+		VALUES(#{id}, #{passwd}, #{name})
+	</insert>
+
+	<select id="selectMemberById" resultType="int" parameterType="String"> <!-- 회원가입시 아이디 확인 -->
+		SELECT COUNT(*)
+		FROM members
+		WHERE id = #{id}
+	</select>
+
+	<select id="selectMember" resultType="member" parameterType="member">
+		SELECT *
+		FROM members
+		WHERE id = #{id}
+		AND passwd = #{passwd}
+	</select>
+
+	<update id="updateMember" parameterType="member">
+		UPDATE members
+		SET email = #{email}, phone = #{phone}, birth = #{birth}, sex = #{sex},
+		image= #{image}, major = #{major}
+		WHERE id = #{id}
+	</update>
+
+	<insert id="insertCourse" parameterType="subject">
+		INSERT INTO
+		COURSE(id, subnum)
+		VALUES(#{id},#{subnum_origin})
+	</insert>
+
+
+	<select id="selectSubject" resultType="subject_board"
+		parameterType="String">
+		SELECT c.id, s.subject ,s.subnum
+		FROM course c, subject s
+		WHERE c.subnum = s.subnum and c.id=#{id}
+	</select>
+
+	<delete id="deleteCourse" parameterType="String">
+		DELETE FROM webprograming.course
+		WHERE id=#{id}
+	</delete>
+
+	<select id="selectBoard" parameterType="int" resultType="board">
+		SELECT *
+		FROM board
+		WHERE subnum = #{subnum}
+		ORDER BY boardnum DESC;
+	</select>
+
+	<select id="selectlecture" parameterType="int" resultType="lecture">
+		SELECT *
+		FROM subject
+		WHERE subnum = #{subnum}
+	</select>
+
+	<insert id="insertBoard" parameterType="board">
+		INSERT INTO
+		BOARD(subnum, content, id)
+		VALUE(#{subnum},#{content},#{id})
+	</insert>
+
+	<!-- 조건에 맞게 회원검색 -->
+	<select id="selectFriend" parameterType="searchFriend"
+		resultType="member">
+		SELECT m.id, m.name, m.image, m.major
+		FROM (select id from course where subnum =#{subnum})c,members m
+		WHERE m.id = c.id and m.major = #{major} and m.sex=#{sex}
+	</select>
+	<!-- 성별 무관 -->
+	<select id="selectFriendNosex" parameterType="searchFriend"
+		resultType="member">
+		SELECT m.id, m.name, m.image, m.major
+		FROM (select id from course where subnum =#{subnum})c,members m
+		WHERE m.id = c.id and m.major = #{major}
+	</select>
+
+	<!-- 학과가 무관일때 -->
+	<select id="selectFriendNormajor" parameterType="searchFriend"
+		resultType="member">
+		SELECT m.id, m.name, m.image, m.major
+		FROM (select id from course where subnum =#{subnum})c,members m
+		WHERE m.id = c.id and m.sex = #{sex}
+	</select>
+
+	<!-- 성별,학과 무관 -->
+	<select id="selectFriendNo" parameterType="searchFriend"
+		resultType="member">
+		SELECT m.id, m.name, m.image, m.major
+		FROM (select id from course where subnum =#{subnum})c,members m
+		WHERE m.id = c.id
+	</select>
+
+	<insert id="addFriendIng" parameterType="Friend">
+		INSERT INTO
+		friend_ing(id,friend)
+		VALUES(#{id},#{friend})
+	</insert>
+
+	<select id="fri_list_ready" parameterType="String" resultType="member">
+		SELECT m.id, m.name, m.image, m.major
+		FROM (select id from friend_ing where friend =#{id})c,members m
+		WHERE m.id = c.id
+	</select>
+
+	<delete id="deleteFriend" parameterType="String">
+		DELETE FROM webprograming.friend_ing
+		WHERE id=#{id}
+	</delete>
+
+	<insert id="addFriend" parameterType="Friend">
+		INSERT INTO
+		friend(id,friend)
+		VALUES(#{id},#{friend})
+	</insert>
+
+	<select id="select_fri_list" resultType="member" parameterType="String">
+		SELECT m.id, m.name, m.image, m.major
+		FROM (select friend from friend where id =#{id})c,members m
+		WHERE m.id = c.friend
+	</select>
+	<!-- receiver 알아내기 -->
+	<insert id="insertMessage" parameterType="Message">
+		INSERT INTO
+		MESSAGE (receiver_id,receiver_name,sender_id,sender_name,content,title,image,major)
+		VALUES(#{receiver_id},#{receiver_name},#{sender_id},#{sender_name},#{content},#{title},#{image},#{major})
+	</insert>
+	
+	<select id="selectName" parameterType="String" resultType="member">
+		SELECT name,image,major
+		FROM members
+		WHERE id = #{id}
+	</select>
+	
+	<select id="selectMessage" resultType="Message" parameterType="String">
+		SELECT sender_name,major,image,title,content
+		FROM message
+		WHERE receiver_id =#{id}
+		ORDER BY num DESC
+	</select>
+	
+	<select id="selectMessageId" resultType="String" parameterType="String">
+		SELECT id
+		FROM members
+		WHERE name = #{name}
+	</select>
+</mapper>
