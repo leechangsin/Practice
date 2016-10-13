@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE>
 <html>
 <head>
 <script>
@@ -52,11 +52,11 @@ body{background-color:#EAEAEA; font-family: 'Nanum Gothic', sans-serif; }
    <div class='col-md-12'>
 		<!--상단바-->
 		<p class="bg-primary" style="">
-			<img src='/resources/navbar.jpg'
-				style="width: 66px; height: 35px; margin: 3px 10px 3px 5px;">
+			<img src='/resources/navbar.jpg' style="width: 66px; height: 35px; margin: 3px 10px 3px 5px;">
 			<B>CAMPUSBOOK</B>
-			<td align=right><button type="button" class="btn btn-primary"
-					style='margin: 0px 0px 0px 1550px;' id="logout" name="logout">LOGOUT</button></td>
+			<td align="right">
+				<button type="button" class="btn btn-primary" style='margin: 0px 0px 0px 1550px;' id="logout" name="logout">LOGOUT</button>
+			</td>
 		</p>
 	</div>  
    <div class='col-md-2'></div>
@@ -71,8 +71,8 @@ body{background-color:#EAEAEA; font-family: 'Nanum Gothic', sans-serif; }
                         <img src='<%=session.getAttribute("img") %>' style= 'width:100%; height:120px; margin:0px 0px 0px -20px;'class="img-rounded">
                      </div>
                      <div class='col-md-5' style='margin:0px 0px 0px -20px;'>
-                        </br></br></br>
-                        <a href="/main"><h4><B><%=session.getAttribute("username")%></B></h4></a>
+                        <br><br><br>
+                        <h4><a href="/main"><B><%=session.getAttribute("username")%></B></a></h4>
                      </div>
                   </div>
                      <ul class="nav nav-pills nav-stacked" >
@@ -121,13 +121,12 @@ body{background-color:#EAEAEA; font-family: 'Nanum Gothic', sans-serif; }
                      <table width="100%">
                                       <tbody>
                                         <tr>
-                                          <td class="goods_img"><sapn class="goods_cnt"></sapn> 
+                                          <td class="goods_img"><span class="goods_cnt"></span> 
                                           <img src="${list.image}" style="height:100px; width:100px; margin: 0px 0px 0px -10px;"class="img-rounded"></td>
                                           <td class="goods_infogrp">
-                                                <h5 style='margin:20px 0px 0px -35px;'>이름:${list.name}</h6>
+                                                <h5 style='margin:20px 0px 0px -35px;'>이름:${list.name}</h5>
                                              <h5 style='margin:10px 0px 0px -35px;'>학과:${list.major}</h5>
                                              <h5 style='margin:10px 0px 10px -35px;'>학번:${list.id}</h5>
-                                                </h5>
                                            </td>
                                            <td>
                                                <button class="btn btn-primary" type="button" id="add" onClick="location.href='/aceeptFriend?id=${list.id}'">요청수락</button>
@@ -153,10 +152,9 @@ body{background-color:#EAEAEA; font-family: 'Nanum Gothic', sans-serif; }
                                           <td class="goods_img"><sapn class="goods_cnt"></sapn> 
                                            <img src="${list.image}" style="height:100px; width:100px; margin: 0px 0px 0px -10px;"class="img-rounded"></td>
                                           <td class="goods_infogrp">
-                                             <h5 style='margin:20px 0px 0px -35px;'>이름:<span class="name">${list.name}</span></h6>
+                                             <h5 style='margin:20px 0px 0px -35px;'>이름:<span class="name">${list.name}</span></h5>
                                              <h5 style='margin:10px 0px 0px -35px;'>학과:<span class="major">${list.major}</span></h5>
                                              <h5 style='margin:10px 0px 10px -35px;'>학번:<span class="id">${list.id}</span></h5>
-                                                </h5>
                                            </td>
                                            <td>
                                                <button class="btn btn-default popbutton"  >메시지</button>
@@ -177,8 +175,6 @@ body{background-color:#EAEAEA; font-family: 'Nanum Gothic', sans-serif; }
 </body>
 <script>
 <!-- 다중선택 방법 알아내기 -->
-
-
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').focus()
 })
@@ -189,20 +185,13 @@ $("#logout").click(function(){
 	})
 
 $('.popbutton').click(function(){
-	var id =
-$(this).parent().parent().find('.id').text();
-	var name =
-$(this).parent().parent().find('.name').text();
+	var id = $(this).parent().parent().find('.id').text();
+	var name = $(this).parent().parent().find('.name').text();
 		
 	$('div.modal').modal();
 	$('#modalId').val(id);
 	$('#modalName').val(name);
 })
-
-
-
-
-
 </script>
 
 </html>

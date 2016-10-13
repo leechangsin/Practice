@@ -92,7 +92,6 @@ public class MemberController {
 	// TODO 시간남으면 비밀번호확인 로직 구현
 	@RequestMapping("/join")
 	public String join(HttpServletRequest request,MemberModel model) {
-		System.out.println(model.getId()+model.getName()+model.getPasswd());
 		if (memberservice.join(model)) {
 			return "joinSuccess";
 		} else {

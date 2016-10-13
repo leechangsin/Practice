@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE>
 <html>
 <head>
    <meta http-equiv="Content-Type" content="text/html; utf-8">
@@ -63,7 +63,7 @@ body{background-color:#EAEAEA; font-family: 'Nanum Gothic', sans-serif; }
                         <img src='<%=session.getAttribute("img") %>' style= 'width:100%; height:120px; margin:0px 0px 0px -20px;' class="img-rounded">
                       </div>
                       <div class='col-md-5' style='margin:0px 0px 0px -20px;'>
-                        </br></br></br>
+                        <br><br><br>
                         <a href="/main"><h4><B><%=session.getAttribute("username")%></B></h4></a>
                       </div>
                     </div>
@@ -185,8 +185,7 @@ $("#logout").click(function(){
 	
 $('.popbutton').click(function(){
 
-	var name =
-$(this).parent().parent().find('.name').text();
+	var name = $(this).parent().parent().find('.name').text();
 		
 	$('div.modal').modal();
 	$('#modalName').val(name);

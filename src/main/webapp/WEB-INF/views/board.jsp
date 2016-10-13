@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; utf-8">
@@ -40,14 +41,15 @@ body{background-color:#EAEAEA; font-family: 'Nanum Gothic', sans-serif; }
 										style='width: 100%; height: 120px; margin: 0px 0px 0px -20px;'>
 								</div>
 								<div class='col-md-5' style='margin: 0px 0px 0px -20px;'>
-									</br> </br> </br>
-									<a href="/main"><h4><B><%=session.getAttribute("username")%></B></h4></a>
+									<br> <br> <br>
+									<h4><a href="/main"><B><%=session.getAttribute("username")%></B></a></h4>
 								</div>
 							</div>
 							<ul class="nav nav-pills nav-stacked">
 								<center>
-									<li role="presentation" style='margin: 40px 0px 0px 0px;'><a
-										href="#">시 간 표</a></li>
+								<ul>
+									<li role="presentation" style='margin: 40px 0px 0px 0px;'><a href="#">시 간 표</a></li>
+								</ul>
 								</center>
 								<li role="presentation" class="dropdown"
 									style='margin: 20px 0px 0px 0px;'><center>
@@ -109,8 +111,8 @@ body{background-color:#EAEAEA; font-family: 'Nanum Gothic', sans-serif; }
                      <h1><strong><mark>${lecture_subject}</mark></strong></h1>
                      <table width="100%">
                        <tbody>
-                        <td>
-                          <h4><strong>교수님</strong></h4>
+                       <td>
+                         <h4><strong>교수님</strong></h4>
                            ${lecture_professor}
                         </td>
                         <td>

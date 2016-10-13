@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; utf-8">
@@ -47,7 +47,7 @@ body{background-color:#EAEAEA; font-family: 'Nanum Gothic', sans-serif; }
 										class="img-rounded">
 								</div>
 								<div class='col-md-5' style='margin: 0px 0px 0px -20px;'>
-									</br> </br> </br>
+									<br> <br> <br>
 									<a href="/main"><h4><B><%=session.getAttribute("username")%></B></h4></a>
 								</div>
 							</div>
@@ -133,8 +133,8 @@ body{background-color:#EAEAEA; font-family: 'Nanum Gothic', sans-serif; }
 						<center>
 
 							<img src='/resources/inuimg.jpg'
-								style='height: 170px; margin: 110px 0px 0px 0px;'> </br> </br> </br> </br> </br> <B
-								style="font-size: 20px;">인천대학교 Campusbook에 오신것을 환영합니다.</B></br> <B
+								style='height: 170px; margin: 110px 0px 0px 0px;'> <br> <br> <br> <br> <br> <B
+								style="font-size: 20px;">인천대학교 Campusbook에 오신것을 환영합니다.</B><br> <B
 								style="font-size: 20px; font-family: 씨고딕">Campusbook에서 나와 같은
 								수업을 듣는 친구들을 만나보세요.</B>
 
